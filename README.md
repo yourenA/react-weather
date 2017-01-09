@@ -2,6 +2,7 @@
 这是我刚接触react的时候写的一个查询天气的小DEMO
 
 运行过程
+
 1. 将代码clone到本地 git@github.com:yourenA/react-weather.git
 2. cd react-weather
 3. 执行npm install 安装项目依赖
