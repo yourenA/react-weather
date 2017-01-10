@@ -1,10 +1,12 @@
 /**
  * Created by daijiaru on 2016/9/18.
  */
-var path = require('path');
-var webpack = require('webpack');
+let path = require('path');
+let webpack = require('webpack');
+let ExtractTextPlugin = require("extract-text-webpack-plugin");
+let autoprefixer = require('autoprefixer');
 module.exports = {
-    /*entry: ['webpack/hot/dev-server', path.resolve(__dirname, './app/main.js')],*/
+    devtool: 'inline-source-map',
     entry: {
         index:'webpack/hot/dev-server',
         weather: "./app/weather.js"
@@ -12,6 +14,9 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './build'),
         filename: '[name].js'
+    },
+    resolve: {
+        extensions: ['', '.js', 'jsx'],
     },
     module: {
         loaders: [
@@ -26,16 +31,34 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loaders: ['style', 'css', 'sass']
+                loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
             }, {
                 test: /\.css$/,
-                loader: ['style','css']
+                loader: ExtractTextPlugin.extract('style', 'css!postcss')
             },
-            //图片文件使用 url-loader 来处理，小于8kb的直接转为base64
-            { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
+            { test: /\.(png|jpg|jpeg|gif)$/, loader: 'url-loader?limit=10000'},
+            { test: /\.woff2?$/, loader: 'url?limit=10000&minetype=application/font-woff' },
+            { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&mimetype=application/font-woff" },
+            { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=application/octet-stream" },
+            { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml" },
+            { test: /\.json$/, loader: 'json',}
         ]
     },
+    postcss: [
+        autoprefixer({
+            browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8']
+        })
+    ],
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new ExtractTextPlugin('[name].css'),
+        new webpack.optimize.UglifyJsPlugin({
+            test: /(\.jsx|\.js)$/,
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.optimize.CommonsChunkPlugin('common.js', '[name]')
     ]
 };

@@ -2,12 +2,12 @@
  * Created by daijiaru on 2016/10/24.
  */
 
-var React=require('react');
+let React=require('react');
 
-var ChangeArea=React.createClass({
+let ChangeArea=React.createClass({
     render:function () {
-        var loading='block';
-        var showWeather=this.props.showWeather;
+        let loading='block';
+        let showWeather=this.props.showWeather;
         if(showWeather){
             loading='none';
         }

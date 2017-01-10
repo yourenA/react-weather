@@ -1,29 +1,29 @@
 /**
  * Created by daijiaru on 2016/10/24.
  */
-var React=require('react');
-var Loading=require('./Loading');
-var switchType=require('./switchType');
-var TodayWeather=require('./TodayWeather');
-var ShowWeather=React.createClass({
+let React=require('react');
+let Loading=require('./Loading');
+let switchType=require('./switchType');
+let TodayWeather=require('./TodayWeather');
+let ShowWeather=React.createClass({
     render:function () {
-        var newWeather=this.props.forecast;
-        var date=new Date();
-        var todayYear=date.getFullYear();
-        var todayMonth=date.getMonth()+1;
-        var todayType='';
-        var todayDate='';
-        var pos='';
+        let newWeather=this.props.forecast;
+        let date=new Date();
+        let todayYear=date.getFullYear();
+        let todayMonth=date.getMonth()+1;
+        let todayType='';
+        let todayDate='';
+        let pos='';
         if(newWeather[0]){//这里要加一个判断，因为第一次的时候还没有数据,直接使用newWeather[0].type会出错
             todayType=newWeather[0].type;
             todayDate=newWeather[0].date;
             pos=switchType(todayType);
         }
-        var SixWeathers=newWeather.map(function (weather,index) {
-            var fl=weather.fl || weather.fengli;
-            var fx=weather.fx || weather.fengxiang;
-            var dw=weather.low.slice(3);
-            var gw=weather.high.slice(3);
+        let SixWeathers=newWeather.map(function (weather,index) {
+            let fl=weather.fl || weather.fengli;
+            let fx=weather.fx || weather.fengxiang;
+            let dw=weather.low.slice(3);
+            let gw=weather.high.slice(3);
             return(
                 <li key={index} className="item">
                     <ul>
@@ -38,8 +38,8 @@ var ShowWeather=React.createClass({
                 );
 
         }.bind(this));
-        var flag='none';
-        var showWeather=this.props.showWeather;
+        let flag='none';
+        let showWeather=this.props.showWeather;
         if(showWeather){
             flag='block';
         }

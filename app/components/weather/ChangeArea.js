@@ -1,14 +1,14 @@
 /**
  * Created by daijiaru on 2016/10/24.
  */
-var React=require('react');
+let React=require('react');
 
-var ChangeArea=React.createClass({
+let ChangeArea=React.createClass({
     handleChange:function (ev) {
 
         var ev = ev || window.event;
         ev.stopPropagation();
-        var target = ev.target || ev.srcElement;
+        let target = ev.target || ev.srcElement;
         if(target.nodeName.toLowerCase() == 'span'){
             this.props.changeWeatherShow();
             this.props.changeArea(target.textContent);
@@ -17,14 +17,14 @@ var ChangeArea=React.createClass({
         }
     },
     render:function () {
-        var showChange=this.props.showChange;
-        var flag='none';
+        let showChange=this.props.showChange;
+        let flag='none';
         if(showChange){
             flag='block';
         }
-        var citys=this.props.citys.map(function (city,index) {
-            var ddContent=[];
-            for(var i=0;i<city.city.length;i++){
+        let citys=this.props.citys.map(function (city,index) {
+            let ddContent=[];
+            for(let i=0;i<city.city.length;i++){
                 ddContent.push(<span key={i} className='city'>{city.city[i]}</span>);
             }
             return(

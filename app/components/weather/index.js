@@ -1,17 +1,17 @@
 /**
  * Created by daijiaru on 2016/10/24.
  */
-var React=require('react');
-var $=require('jquery');
-var ShowArea=require('./ShowArea');
-var ShowWeather=require('./ShowWeather');
-var ChangeArea=require('./ChangeArea');
+let React=require('react');
+let $=require('jquery');
+let ShowArea=require('./ShowArea');
+let ShowWeather=require('./ShowWeather');
+let ChangeArea=require('./ChangeArea');
 require('./index.scss');
-var citys=require('./city');
-var Weather=React.createClass({
-    getInitialState:function(){
+let citys=require('./city');
+let Weather=React.createClass({
+     getInitialState:function(){
         return{
-            showWeather:false,
+            showWeather: false,
             showChange:false,
             area:'广州',
             forecast:[],

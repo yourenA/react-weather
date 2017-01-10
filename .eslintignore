@@ -1,0 +1,8 @@
+# /node_modules/* and /bower_components/* ignored by default
+node_modules/*
+# Ignore build files
+build/*
+# Ignore README.md
+README.md
+# Ignore yarn.lock
+yarn.lock

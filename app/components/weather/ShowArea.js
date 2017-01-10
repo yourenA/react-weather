@@ -1,10 +1,10 @@
 /**
  * Created by daijiaru on 2016/10/24.
  */
-var React=require('react');
+let React=require('react');
 
 
-var ShowArea=React.createClass({
+let ShowArea=React.createClass({
     handClick:function () {
         this.props.showDialog();
     },

@@ -1,8 +1,8 @@
 /**
  * Created by daijiaru on 2016/10/24.
  */
-var React=require('react');
-var TodayWeather=React.createClass({
+let React=require('react');
+let TodayWeather=React.createClass({
     render:function () {
 
         return(

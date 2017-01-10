@@ -2,7 +2,7 @@
  * Created by daijiaru on 2016/10/25.
  */
 function switchType(weatherType) {
-    var pos='';
+    let pos='';
     switch(weatherType)
     {
     case '阵雨':

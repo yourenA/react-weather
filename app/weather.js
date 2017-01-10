@@ -1,9 +1,9 @@
 /**
  * Created by Administrator on 2016/10/24.
  */
-var  React = require('react');
-var  ReactDOM = require('react-dom');
-var Weather=require('./components/weather/index')
+let  React = require('react');
+let  ReactDOM = require('react-dom');
+let Weather=require('./components/weather/index');
 
 ReactDOM.render(
     <div>
@@ -11,4 +11,4 @@ ReactDOM.render(
     </div>
     ,
     document.getElementById('content')
-)
+);
