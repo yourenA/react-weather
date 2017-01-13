@@ -1,15 +1,13 @@
 /**
  * Created by daijiaru on 2016/10/24.
  */
-let React=require('react');
-let $=require('jquery');
 let ShowArea=require('./ShowArea');
 let ShowWeather=require('./ShowWeather');
 let ChangeArea=require('./ChangeArea');
 require('./index.scss');
 let citys=require('./city');
 let Weather=React.createClass({
-     getInitialState:function(){
+    getInitialState:function(){
         return{
             showWeather: false,
             showChange:false,
@@ -70,6 +68,7 @@ let Weather=React.createClass({
     render:function () {
         return(
             <div>
+
                 <ShowArea   showDialog={this.showDialog}  area={this.state.area} />
                 <ChangeArea changeWeatherShow={this.changeWeatherShow}  citys={citys} showChange={this.state.showChange} showDialog={this.showDialog} changeArea={this.changeArea}/>
                 <ShowWeather

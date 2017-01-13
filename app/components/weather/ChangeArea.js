@@ -1,12 +1,10 @@
 /**
  * Created by daijiaru on 2016/10/24.
  */
-let React=require('react');
-
 let ChangeArea=React.createClass({
     handleChange:function (ev) {
 
-        var ev = ev || window.event;
+        ev = ev || window.event;
         ev.stopPropagation();
         let target = ev.target || ev.srcElement;
         if(target.nodeName.toLowerCase() == 'span'){

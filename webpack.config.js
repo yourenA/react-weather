@@ -8,12 +8,13 @@ let autoprefixer = require('autoprefixer');
 module.exports = {
     devtool: 'inline-source-map',
     entry: {
-        index:'webpack/hot/dev-server',
+        index:'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
         weather: "./app/weather.js"
     },
     output: {
         path: path.resolve(__dirname, './build'),
-        filename: '[name].js'
+        filename: '[name].js',
+        publicPath: '/'
     },
     resolve: {
         extensions: ['', '.js', 'jsx'],
@@ -42,7 +43,7 @@ module.exports = {
             { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=application/octet-stream" },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
             { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml" },
-            { test: /\.json$/, loader: 'json',}
+            { test: /\.json$/, loader: 'json'}
         ]
     },
     postcss: [
@@ -59,6 +60,18 @@ module.exports = {
                 warnings: false
             }
         }),
-        new webpack.optimize.CommonsChunkPlugin('common.js', '[name]')
+        new webpack.optimize.CommonsChunkPlugin('common.js', '[name]'),
+        /*ProvidePlugin 插件可以定义一个共用的入口，比如 下面加的 React ,他会在每个文件自动
+        require了react，所以你在文件中不需要 require('react')，也可以使用 React。*/
+        new webpack.ProvidePlugin({
+            React: 'react',
+            ReactDOM: 'react-dom',
+            $:'jquery'
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
+            }
+        }),
     ]
 };

@@ -1,7 +1,6 @@
 /**
  * Created by daijiaru on 2016/10/24.
  */
-let React=require('react');
 let Loading=require('./Loading');
 let switchType=require('./switchType');
 let TodayWeather=require('./TodayWeather');
